@@ -2,6 +2,8 @@ import numpy as np
 import cv2 
 
 def main():
+
+    print('hola mundo')
     img = cv2.imread('img.png', 0)
     cv2.imshow('image', img)
     k = cv2.waitKey(0)
