@@ -1,18 +1,20 @@
-import numpy as np 
-import cv2 
+import numpy as np
+import cv2
 
 def main():
+    cap = cv2.VideoCapture('drive.mp4')
 
-    print('hola mundo')
-    img = cv2.imread('img.png', 0)
-    cv2.imshow('image', img)
-    k = cv2.waitKey(0)
+    while(cap.isOpened()):
+        ret, frame = cap.read()
 
-    if k == 27:
-        cv2.destroyAllWindows()
-    elif k == ord('s'):
-        cv2.imwrite('copy.png', img)
-        cv2.destroyAllWindows()
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        cv2.imshow('frame',gray)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+            
+    cap.release()
+    cv2.destroyAllWindows()
+
 
 if __name__ == '__main__': main()
-
